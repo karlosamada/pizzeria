@@ -1,0 +1,25 @@
+.cart-container {
+  width: 25%;
+  background: #E8E8E8;
+  border-radius: 10px;
+  height: 300px;
+  padding: 0 15px;
+}
+
+.empty-basket {
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shopping-cart-container {
+  min-height: 100px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 15px 0;
+}

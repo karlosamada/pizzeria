@@ -1,0 +1,21 @@
+.card-container {
+    height: auto;
+    width: 200px;
+    border: 1px solid rgba(0,0,0, .25);
+    border-radius: 25px;
+    padding: 10px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+img.rounded-courners {
+    border-radius: 25px;
+}
+
+.toppings-container {
+    max-width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+}
