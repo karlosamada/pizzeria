@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
-import { Modal, Box, Divider , FormControlLabel, Checkbox, Typography, RadioGroup, Radio, Button } from '@mui/material';
+import { Modal, Box, Divider , FormControlLabel, Checkbox, Typography, RadioGroup, Radio } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { addBasket } from '../../store/pizzaSlice';
+import Button from '../Button/Button';
 
-const ModalComponent = ({ id, toppings, open, handleClose}) => {
+const ModalComponent = ({ pizza, toppings, open, handleClose}) => {
   const dispatch = useDispatch();
   const [toppingList,setToppingList] = useState([]);
   const [size, setSize] = useState('');
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   
   useEffect(() => {
     if (toppings.length > 0) {
@@ -42,7 +41,6 @@ const ModalComponent = ({ id, toppings, open, handleClose}) => {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    // width: 500,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     borderRadius: '25px',
@@ -57,12 +55,13 @@ const ModalComponent = ({ id, toppings, open, handleClose}) => {
     }
 
     const payload = {
-      id,
+      id: pizza.id,
       size,
       toppings: toppingList.filter(item => item.checked).map(item => item.name)
     };
 
     dispatch(addBasket(payload));
+
     const newToppings = toppings.map(topping => ({
       ...topping,
       checked: false
@@ -90,13 +89,15 @@ const ModalComponent = ({ id, toppings, open, handleClose}) => {
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            {pizza.name}
+          </Typography>
           <Typography>Toppings</Typography>
           <div className="toppings-container">
             {toppingList.map((topping) => (
-              <div key={topping.id}>
+              <div key={topping.id} className='toppings'>
                 <FormControlLabel
                   control={
                     <Checkbox checked={topping.checked} onChange={(e) => onChange(e, topping.id)} name={topping.name} />
@@ -114,18 +115,14 @@ const ModalComponent = ({ id, toppings, open, handleClose}) => {
                 defaultValue="female"
                 name="radio-buttons-group"
               >
-                <FormControlLabel value="Small" onChange={() => setSize('small')} control={<Radio />} label="Small" sx={{ fontSize: 10}} />
-                <FormControlLabel value="Medium" onChange={() => setSize('medium')} control={<Radio />} label="Medium" />
-                <FormControlLabel value="Large" onChange={() => setSize('large')} control={<Radio />} size="large" label="Large" />
+                <FormControlLabel value="Small" onChange={() => setSize('small')} control={<Radio />} label={`Small - $${pizza.price[0]}`} sx={{ fontSize: 10}} />
+                <FormControlLabel value="Medium" onChange={() => setSize('medium')} control={<Radio />} label={`Medium - $${pizza.price[1]}`} />
+                <FormControlLabel value="Large" onChange={() => setSize('large')} control={<Radio />} label={`Large - $${pizza.price[2]}`} />
               </RadioGroup>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between'}}>
-            <Button variant='outlined' onClick={onSubmit}>
-              Submit
-            </Button>
-            <Button variant='outlined' onClick={onCancel}>
-              Cancel
-            </Button>
+            <Button onClick={onSubmit} label="Submit" disabled={size === ''} />
+            <Button onClick={onCancel} label="Cancel"/>
           </div>
         </Box>
       </Modal>
@@ -134,7 +131,7 @@ const ModalComponent = ({ id, toppings, open, handleClose}) => {
 }
 
 ModalComponent.propTypes = {
-  id: PropTypes.string,
+  pizza: PropTypes.object,
   toppings: PropTypes.array,
   open: PropTypes.bool,
   handleClose: PropTypes.func,

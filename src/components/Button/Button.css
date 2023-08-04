@@ -1,0 +1,16 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  background-color: #C8C8C8;
+  border-radius: 10px;
+  cursor: pointer;
+  min-width: 150px;
+
+  &.disabled {
+    background-color: #D3D3D3;
+    opacity: .5;
+    cursor: default;
+  }
+}

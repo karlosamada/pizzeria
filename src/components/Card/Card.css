@@ -1,5 +1,5 @@
 .card-container {
-    height: auto;
+    height: 250px;
     width: 200px;
     border: 1px solid rgba(0,0,0, .25);
     border-radius: 25px;
@@ -15,7 +15,10 @@ img.rounded-courners {
 }
 
 .toppings-container {
-    max-width: 400px;
     display: flex;
     flex-wrap: wrap;
+}
+
+.toppings {
+    flex-basis: 25%;
 }

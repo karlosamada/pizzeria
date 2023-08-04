@@ -1,9 +1,5 @@
 .cart-container {
   width: 25%;
-  background: #E8E8E8;
-  border-radius: 10px;
-  height: 300px;
-  padding: 0 15px;
 }
 
 .empty-basket {
@@ -15,6 +11,9 @@
 
 .shopping-cart-container {
   min-height: 100px;
+  background: #E8E8E8;
+  padding: 15px;
+  border-radius: 10px;
 }
 
 .cart-item {
@@ -22,4 +21,39 @@
   justify-content: space-between;
   gap: 20px;
   padding: 15px 0;
+}
+
+.total-container {
+  margin: 10px 0;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  background-color: #D3D3D3;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.empty-basket-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+
+  .enabled {
+    cursor: pointer; 
+  }
+
+  .disabled {
+    opacity: .5;
+    cursor: default; 
+  }
+}
+
+
+.remove-item {
+  cursor: pointer;
 }

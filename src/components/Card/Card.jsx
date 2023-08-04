@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Button, Typography, } from "@mui/material";
+import { Typography, } from "@mui/material";
 import { useSelector } from "react-redux";
 import './Card.css';
+import PropTypes from 'prop-types';
 
 import ModalComponent from "../Modal/Modal";
+import Button from "../Button/Button";
 
 const Card = ({ pizza }) => {
   const toppings = useSelector(state => state.toppings);
@@ -24,21 +26,18 @@ const Card = ({ pizza }) => {
         <div className="image-container">
           <img src={pizza.image} height={100} width={200} alt={pizza.name} className="rounded-courners" />
         </div>
-        <Typography align="center">{pizza.name}</Typography>
-        <Button fullWidth variant="outlined" onClick={handleClickOpen}>Choose</Button>
+        <Typography noWrap align="center">{pizza.name}</Typography>
+        <Typography sx={{color: 'rgba(0,0,0, 0.5)'}} variant="subtitle2" align="center">starts at ${pizza.price[0]}</Typography>
+        <Button onClick={handleClickOpen} label="Choose" disabled={false}>Choose</Button>
       </div>
 
-      <ModalComponent id={pizza.id} toppings={toppings} open={open} handleClose={handleClose} />
+      <ModalComponent pizza={pizza} toppings={toppings} open={open} handleClose={handleClose} />
     </>
   )
 }
 
 Card.propTypes = {
-  pizza: {
-    id: String,
-    name: String,
-    price: Number,
-  }
+  pizza: PropTypes.object
 };
 
 

@@ -5,7 +5,7 @@ const getRandomArbitrary = (min, max) => {
 export const generatePizza = [...Array(10)].map((_, index) => ({
   id: `pizza-${index}`,
   image: '/images/pizza.jpg',
-  name: `Pizza - ${index+1}`,
+  name: `Pizza Name #${index+1}`,
   price: [getRandomArbitrary(5, 10), getRandomArbitrary(15, 20) ,getRandomArbitrary(25, 30)]
 }));
 
