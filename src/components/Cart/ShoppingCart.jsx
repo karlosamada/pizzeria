@@ -22,8 +22,8 @@ const ShoppingCart = ({ basket, removeItem }) => {
 
   return basket.map((pizza, index) => (
       <div key={`cart-item-${pizza.id}-${index}`}>
-        <div className='cart-item' >
-          <div style={{ width: '10%'}} onClick={() => removeItem(pizza.id)}>
+        <div className='cart-item' data-testid="cart-item">
+          <div style={{ width: '10%'}} onClick={() => removeItem(pizza.id)} data-testid="remove-item">
             <CancelIcon className="remove-item" fontSize='small' />
           </div>
           <div style={{ width: '75%'}}>

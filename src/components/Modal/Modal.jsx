@@ -34,7 +34,6 @@ const ModalComponent = ({ pizza, toppings, open, handleClose}) => {
 
     setToppingList(newToppings);
   }
-  
 
   const style = {
     position: 'absolute',
@@ -89,6 +88,7 @@ const ModalComponent = ({ pizza, toppings, open, handleClose}) => {
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
+        data-testid="modal-component"
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">

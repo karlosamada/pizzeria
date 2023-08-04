@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { generatePizza, generateToppings } from '../../mock';
 import { capitalize } from '@mui/material';
 
-const initialState = {
+export const initialState = {
   pizzas: generatePizza,
   toppings: generateToppings,
   basket: [],

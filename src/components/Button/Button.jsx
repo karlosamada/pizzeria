@@ -6,8 +6,13 @@ const Button = ({
   label,
   onClick
 }) => {
+  const onClickHandler = () => {
+    if (!disabled) {
+      onClick()
+    }
+  }
   return (
-    <div onClick={onClick} className={`button ${disabled ? 'disabled' : ''}`}>
+    <div data-testid="button" onClick={onClickHandler} className={`button ${disabled ? 'disabled' : ''}`}>
       {label}
     </div>
   )

@@ -8,6 +8,7 @@ import ModalComponent from "../Modal/Modal";
 import Button from "../Button/Button";
 
 const Card = ({ pizza }) => {
+  console.log(pizza);
   const toppings = useSelector(state => state.toppings);
   const [open ,setOpen] = useState(false);
 
@@ -22,7 +23,7 @@ const Card = ({ pizza }) => {
 
   return (
     <>
-      <div className="card-container" key={pizza.id}>
+      <div className="card-container" data-testid="card-container" key={pizza.id}>
         <div className="image-container">
           <img src={pizza.image} height={100} width={200} alt={pizza.name} className="rounded-courners" />
         </div>

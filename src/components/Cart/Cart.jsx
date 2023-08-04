@@ -27,7 +27,7 @@ const Cart = () => {
 
   return (
     <>
-      <div className='cart-container'>
+      <div className='cart-container' data-testid="cart-container">
         <div className='shopping-cart-container'>
           {basket.length > 0 ? <ShoppingCart basket={basket} removeItem={removeItemFromBasket} />: <EmptyBasket />}
           <Divider sx={{borderStyle:'dashed'}}/>
